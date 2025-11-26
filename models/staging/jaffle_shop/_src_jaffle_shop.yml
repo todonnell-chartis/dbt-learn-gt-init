@@ -2,11 +2,32 @@ version: 2
 
 sources:
   - name: jaffle_shop
+    description: A clone of a postgres database
     database: raw
     schema: jaffle_shop
     tables:
       - name: customers
+        description: Raw customers data
+        columns:
+          - name: id
+            description: The customer ID
+          - name: first_name
+            description: The customer's first name
+          - name: last_name
+            description: The customer's last name
+          - name: email
+            description: The customer's email address
       - name: orders
+        description: Raw orders data
+        columns:
+          - name: id
+            description: The order ID
+          - name: customer_id
+            description: The ID of the customer who placed the order
+          - name: total_amount
+            description: The total amount for the order
+          - name: created_at
+            description: The timestamp when the order was created
         config:
           loaded_at_field: CAST(_etl_loaded_at AS TIMESTAMP WITH TIME ZONE)
           freshness:
